@@ -3,7 +3,6 @@
 namespace KirschbaumDevelopment\NovaMail\Nova;
 
 use App\Nova\User;
-use Laravel\Nova\Resource;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\MorphTo;
@@ -14,6 +13,13 @@ use KirschbaumDevelopment\NovaMail\Models\NovaSentMail as NovaSentMailModel;
 
 class NovaSentMail extends Resource
 {
+    /**
+     * Indicates if the resource should be displayed in the sidebar.
+     *
+     * @var bool
+     */
+    public static $displayInNavigation = false;
+    
     /**
      * The model the resource corresponds to.
      *
@@ -57,6 +63,33 @@ class NovaSentMail extends Resource
         'subject',
         'content',
     ];
+
+    /**
+     * Get the logical group associated with the resource.
+     *
+     * @return string
+     */
+    public static function group()
+    {
+        return __('System');
+    }
+
+    /**
+     * Show the sub-group.
+     *
+     * @return bool
+     */
+    public static $showSubGroup = true;
+
+    /**
+     * Get the logical sub-group associated with the resource.
+     *
+     * @return string
+     */
+    public static function subGroup()
+    {
+        return __('Mail');
+    }
 
     /**
      * Get the fields displayed by the resource.

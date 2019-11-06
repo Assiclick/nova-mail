@@ -9,6 +9,7 @@
     "require": {
         "php": ">=7.1.0",
         "dmitrybubyakin/nova-medialibrary-field": "^1.1",
+        "saintsystems/nova-resource-group-menu": "dev-feat-localization",
         "spatie/laravel-medialibrary": "^7.14"
     },
     "autoload": {
@@ -27,5 +28,11 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Assiclick/nova-resource-group-menu"
+        }
+    ]
 }
