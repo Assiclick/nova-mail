@@ -8,7 +8,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1.0",
-        "dmitrybubyakin/nova-medialibrary-field": "^1.1",
+        "dmitrybubyakin/nova-medialibrary-field": "^2.0",
         "saintsystems/nova-resource-group-menu": "dev-feat-localization",
         "spatie/laravel-medialibrary": "^7.14"
     },
