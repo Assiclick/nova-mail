@@ -8,7 +8,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1.0",
-        "dmitrybubyakin/nova-medialibrary-field": "^2.0",
+        "dmitrybubyakin/nova-medialibrary-field": "dev-feat-dealerclick",
         "saintsystems/nova-resource-group-menu": "dev-feat-localization",
         "spatie/laravel-medialibrary": "^7.14"
     },
@@ -33,6 +33,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/Assiclick/nova-resource-group-menu"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Assiclick/nova-medialibrary-field"
         }
     ]
 }
