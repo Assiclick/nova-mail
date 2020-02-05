@@ -2,10 +2,10 @@
 
 namespace KirschbaumDevelopment\NovaMail\Nova;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
+use Spatie\MediaLibrary\Models\Media;
 use DmitryBubyakin\NovaMedialibraryField\Fields\Medialibrary;
 use KirschbaumDevelopment\NovaMail\Models\NovaMailTemplate as NovaMailTemplateModel;
 
@@ -33,6 +33,22 @@ class NovaMailTemplate extends Resource
     public static $title = 'name';
 
     /**
+     * The columns that should be searched.
+     *
+     * @var array
+     */
+    public static $search = [
+        'name',
+    ];
+
+    /**
+     * Show the sub-group.
+     *
+     * @return bool
+     */
+    public static $showSubGroup = true;
+
+    /**
      * Get the displayable label of the resource.
      *
      * @return string
@@ -53,15 +69,6 @@ class NovaMailTemplate extends Resource
     }
 
     /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
-    public static $search = [
-        'name',
-    ];
-
-    /**
      * Get the logical group associated with the resource.
      *
      * @return string
@@ -70,13 +77,6 @@ class NovaMailTemplate extends Resource
     {
         return __('System');
     }
-
-    /**
-     * Show the sub-group.
-     *
-     * @return bool
-     */
-    public static $showSubGroup = true;
 
     /**
      * Get the logical sub-group associated with the resource.
@@ -91,7 +91,7 @@ class NovaMailTemplate extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -99,19 +99,22 @@ class NovaMailTemplate extends Resource
     {
         return [
             Text::make(__('Name'), 'name'),
-            
+
             Text::make(__('Subject'), 'subject'),
 
             Code::make(__('Content'), 'content')->language('markdown')->hideFromIndex(),
 
-            Medialibrary::make(__('Attachments'), 'mail-templates')->hideFromIndex(),
+            Medialibrary::make('Files', 'mail-templates')
+                ->previewUsing(function (Media $media) {
+                    return $media->getFullUrl('preview');
+                })->hideFromIndex(),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -123,7 +126,7 @@ class NovaMailTemplate extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -135,7 +138,7 @@ class NovaMailTemplate extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -147,7 +150,7 @@ class NovaMailTemplate extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -157,12 +160,12 @@ class NovaMailTemplate extends Resource
     }
 
     /**
-    * Determine if this resource is available for navigation.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    *
-    * @return bool
-    */
+     * Determine if this resource is available for navigation.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return bool
+     */
     public static function availableForNavigation(Request $request)
     {
         return config('nova_mail.show_resources.nova_mail_template');

@@ -2,6 +2,7 @@
 
 namespace KirschbaumDevelopment\NovaMail\Models;
 
+use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -9,7 +10,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 class NovaMailTemplate extends Model implements HasMedia
 {
     use HasMediaTrait;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -35,5 +36,13 @@ class NovaMailTemplate extends Model implements HasMedia
     {
         $this->addMediaCollection('mail-templates')
              ->useDisk('mailTemplatesDocuments');
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('preview')
+            ->width(300)
+            ->optimize()
+            ->nonQueued();
     }
 }
