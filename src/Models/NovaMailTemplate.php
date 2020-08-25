@@ -32,13 +32,13 @@ class NovaMailTemplate extends Model implements HasMedia
         return $this->hasMany(NovaSentMail::class);
     }
 
-    public function registerMediaCollections()
+    public function registerMediaCollections(): void
     {
         $this->addMediaCollection('mail-templates')
              ->useDisk('mailTemplatesDocuments');
     }
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('preview')
             ->width(300)
