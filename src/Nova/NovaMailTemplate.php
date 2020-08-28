@@ -5,7 +5,7 @@ namespace KirschbaumDevelopment\NovaMail\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use DmitryBubyakin\NovaMedialibraryField\Fields\Medialibrary;
 use KirschbaumDevelopment\NovaMail\Models\NovaMailTemplate as NovaMailTemplateModel;
 
