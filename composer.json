@@ -1,42 +1,42 @@
 {
-    "name": "kirschbaum-development/nova-mail",
-    "description": "A Laravel Nova action for sending mail.",
-    "keywords": [
-        "laravel",
-        "nova"
-    ],
-    "license": "MIT",
-    "require": {
-        "php": ">=7.1.0",
-        "dmitrybubyakin/nova-medialibrary-field": "^3.0",
-        "saintsystems/nova-resource-group-menu": "dev-feat-localization",
-        "spatie/laravel-medialibrary": "^8.0"
+  "name": "kirschbaum-development/nova-mail",
+  "description": "A Laravel Nova action for sending mail.",
+  "keywords": [
+    "laravel",
+    "nova"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.0",
+    "dmitrybubyakin/nova-medialibrary-field": "dev-feat-mix|^3.0",
+    "saintsystems/nova-resource-group-menu": "dev-feat-localization",
+    "spatie/laravel-medialibrary": "^7.0|^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "KirschbaumDevelopment\\NovaMail\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "KirschbaumDevelopment\\NovaMail\\NovaMailServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Assiclick/nova-resource-group-menu"
     },
-    "autoload": {
-        "psr-4": {
-            "KirschbaumDevelopment\\NovaMail\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "KirschbaumDevelopment\\NovaMail\\NovaMailServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Assiclick/nova-resource-group-menu"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Assiclick/nova-medialibrary-field"
-        }
-    ]
+    {
+      "type": "vcs",
+      "url": "https://github.com/Assiclick/nova-medialibrary-field"
+    }
+  ]
 }
