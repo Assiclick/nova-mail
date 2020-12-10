@@ -42,13 +42,6 @@ class NovaMailTemplate extends Resource
     ];
 
     /**
-     * Show the sub-group.
-     *
-     * @return bool
-     */
-    public static $showSubGroup = true;
-
-    /**
      * Get the displayable label of the resource.
      *
      * @return string
@@ -66,26 +59,6 @@ class NovaMailTemplate extends Resource
     public static function singularLabel()
     {
         return __('Mail Template');
-    }
-
-    /**
-     * Get the logical group associated with the resource.
-     *
-     * @return string
-     */
-    public static function group()
-    {
-        return __('System');
-    }
-
-    /**
-     * Get the logical sub-group associated with the resource.
-     *
-     * @return string
-     */
-    public static function subGroup()
-    {
-        return __('Mail');
     }
 
     /**
