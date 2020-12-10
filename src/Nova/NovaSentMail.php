@@ -18,8 +18,8 @@ class NovaSentMail extends Resource
      *
      * @var bool
      */
-    public static $displayInNavigation = false;
-    
+    public static $displayInNavigation = true;
+
     /**
      * The model the resource corresponds to.
      *
@@ -33,6 +33,16 @@ class NovaSentMail extends Resource
      * @var string
      */
     public static $title = 'id';
+
+    /**
+     * The columns that should be searched.
+     *
+     * @var array
+     */
+    public static $search = [
+        'subject',
+        'content',
+    ];
 
     /**
      * Get the displayable label of the resource.
@@ -55,46 +65,21 @@ class NovaSentMail extends Resource
     }
 
     /**
-     * The columns that should be searched.
+     * Determine if this resource is available for navigation.
      *
-     * @var array
-     */
-    public static $search = [
-        'subject',
-        'content',
-    ];
-
-    /**
-     * Get the logical group associated with the resource.
-     *
-     * @return string
-     */
-    public static function group()
-    {
-        return __('System');
-    }
-
-    /**
-     * Show the sub-group.
+     * @param \Illuminate\Http\Request $request
      *
      * @return bool
      */
-    public static $showSubGroup = true;
-
-    /**
-     * Get the logical sub-group associated with the resource.
-     *
-     * @return string
-     */
-    public static function subGroup()
+    public static function availableForNavigation(Request $request)
     {
-        return __('Mail');
+        return config('nova_mail.show_resources.nova_sent_mail');
     }
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -117,7 +102,7 @@ class NovaSentMail extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -129,7 +114,7 @@ class NovaSentMail extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -141,7 +126,7 @@ class NovaSentMail extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -153,24 +138,12 @@ class NovaSentMail extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
     public function actions(Request $request)
     {
         return [];
-    }
-
-    /**
-     * Determine if this resource is available for navigation.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return bool
-     */
-    public static function availableForNavigation(Request $request)
-    {
-        return config('nova_mail.show_resources.nova_sent_mail');
     }
 }

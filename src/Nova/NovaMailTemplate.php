@@ -89,6 +89,18 @@ class NovaMailTemplate extends Resource
     }
 
     /**
+     * Determine if this resource is available for navigation.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return bool
+     */
+    public static function availableForNavigation(Request $request)
+    {
+        return config('nova_mail.show_resources.nova_mail_template');
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param \Illuminate\Http\Request $request
@@ -157,17 +169,5 @@ class NovaMailTemplate extends Resource
     public function actions(Request $request)
     {
         return [];
-    }
-
-    /**
-     * Determine if this resource is available for navigation.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return bool
-     */
-    public static function availableForNavigation(Request $request)
-    {
-        return config('nova_mail.show_resources.nova_mail_template');
     }
 }
